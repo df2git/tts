@@ -5,16 +5,16 @@ let tokenInfo = {
     expiredAt: null
 };
 
-// HTML 页面模板
+// HTML 頁面模板
 const HTML_PAGE = `
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>一只会飞的旺旺 - 让文字开口说话的神器</title>
-    <meta name="description" content="声音魔法师，一键将文字转换为自然流畅的语音，支持20+种中文声音，免费在线使用，让你的内容更生动有趣！">
-    <meta name="keywords" content="文字转语音,AI语音合成,在线TTS,语音生成器,免费语音工具">
+    <title>讓文字開口說話的神器</title>
+    <meta name="description" content="聲音魔法師，一鍵將文字轉換為自然流暢的語音，支援20+種中文聲音，免費線上使用，讓你的內容更生動有趣！">
+    <meta name="keywords" content="文字轉語音,AI語音合成,線上TTS,語音生成器,免費語音工具">
     <style>
         :root {
             --primary-color: #2563eb;
@@ -356,7 +356,7 @@ const HTML_PAGE = `
             animation: fadeIn 0.3s ease-out;
         }
         
-        /* 文件上传相关样式 */
+        /* 檔案上傳相關樣式 */
         .input-method-tabs {
             display: flex;
             gap: 8px;
@@ -519,12 +519,12 @@ const HTML_PAGE = `
 <body>
     <div class="container">
         <div class="header">
-            <h1>声音魔法师</h1>
-            <p class="subtitle">让文字开口说话的神器</p>
+            <h1>聲音魔法師</h1>
+            <p class="subtitle">讓文字開口說話的神器</p>
             <div class="features">
                 <div class="feature-item">
                     <span class="feature-icon">✨</span>
-                    <span>20+种中文声音</span>
+                    <span>20+種中文聲音</span>
                 </div>
                 <div class="feature-item">
                     <span class="feature-icon">⚡</span>
@@ -532,11 +532,11 @@ const HTML_PAGE = `
                 </div>
                 <div class="feature-item">
                     <span class="feature-icon">🆓</span>
-                    <span>完全免费</span>
+                    <span>完全免費</span>
                 </div>
                 <div class="feature-item">
                     <span class="feature-icon">📱</span>
-                    <span>支持下载</span>
+                    <span>支援下載</span>
                 </div>
             </div>
         </div>
@@ -544,36 +544,36 @@ const HTML_PAGE = `
         <div class="main-content">
             <div class="form-container">
                 <form id="ttsForm">
-                    <!-- 输入方式选择 -->
+                    <!-- 輸入方式選擇 -->
                     <div class="form-group">
-                        <label class="form-label">选择输入方式</label>
+                        <label class="form-label">選擇輸入方式</label>
                         <div class="input-method-tabs">
                             <button type="button" class="tab-btn active" id="textInputTab">
                                 <span>✏️</span>
-                                <span>手动输入</span>
+                                <span>手動輸入</span>
                             </button>
                             <button type="button" class="tab-btn" id="fileUploadTab">
                                 <span>📁</span>
-                                <span>上传文件</span>
+                                <span>上傳檔案</span>
                             </button>
                         </div>
                     </div>
 
-                    <!-- 手动输入区域 -->
+                    <!-- 手動輸入區域 -->
                     <div class="form-group" id="textInputArea">
-                        <label class="form-label" for="text">输入文本</label>
-                        <textarea class="form-textarea" id="text" placeholder="请输入要转换为语音的文本内容，支持中文、英文、数字等..." required></textarea>
+                        <label class="form-label" for="text">輸入文字</label>
+                        <textarea class="form-textarea" id="text" placeholder="請輸入要轉換為語音的文字內容，支援中文、英文、數字等..." required></textarea>
                     </div>
 
-                    <!-- 文件上传区域 -->
+                    <!-- 檔案上傳區域 -->
                     <div class="form-group" id="fileUploadArea" style="display: none;">
-                        <label class="form-label" for="fileInput">上传txt文件</label>
+                        <label class="form-label" for="fileInput">上傳txt檔案</label>
                         <div class="file-upload-container">
                             <div class="file-drop-zone" id="fileDropZone">
                                 <div class="file-drop-content">
                                     <span class="file-drop-icon">📄</span>
-                                    <p class="file-drop-text">拖拽txt文件到此处，或点击选择文件</p>
-                                    <p class="file-drop-hint">支持txt格式，最大500KB</p>
+                                    <p class="file-drop-text">拖拽txt檔案到此處，或點選選擇檔案</p>
+                                    <p class="file-drop-hint">支援txt格式，最大500KB</p>
                                 </div>
                                 <input type="file" id="fileInput" accept=".txt,text/plain" style="display: none;">
                             </div>
@@ -589,90 +589,96 @@ const HTML_PAGE = `
                 
                     <div class="controls-grid">
                         <div class="form-group">
-                            <label class="form-label" for="voice">语音选择</label>
+                            <label class="form-label" for="voice">語音選擇</label>
                             <select class="form-select" id="voice">
-                                <option value="zh-CN-XiaoxiaoNeural">晓晓 (女声·温柔)</option>
-                                <option value="zh-CN-YunxiNeural">云希 (男声·清朗)</option>
-                                <option value="zh-CN-YunyangNeural">云扬 (男声·阳光)</option>
-                                <option value="zh-CN-XiaoyiNeural">晓伊 (女声·甜美)</option>
-                                <option value="zh-CN-YunjianNeural">云健 (男声·稳重)</option>
-                                <option value="zh-CN-XiaochenNeural">晓辰 (女声·知性)</option>
-                                <option value="zh-CN-XiaohanNeural">晓涵 (女声·优雅)</option>
-                                <option value="zh-CN-XiaomengNeural">晓梦 (女声·梦幻)</option>
-                                <option value="zh-CN-XiaomoNeural">晓墨 (女声·文艺)</option>
-                                <option value="zh-CN-XiaoqiuNeural">晓秋 (女声·成熟)</option>
-                                <option value="zh-CN-XiaoruiNeural">晓睿 (女声·智慧)</option>
-                                <option value="zh-CN-XiaoshuangNeural">晓双 (女声·活泼)</option>
-                                <option value="zh-CN-XiaoxuanNeural">晓萱 (女声·清新)</option>
-                                <option value="zh-CN-XiaoyanNeural">晓颜 (女声·柔美)</option>
-                                <option value="zh-CN-XiaoyouNeural">晓悠 (女声·悠扬)</option>
-                                <option value="zh-CN-XiaozhenNeural">晓甄 (女声·端庄)</option>
-                                <option value="zh-CN-YunfengNeural">云枫 (男声·磁性)</option>
-                                <option value="zh-CN-YunhaoNeural">云皓 (男声·豪迈)</option>
-                                <option value="zh-CN-YunxiaNeural">云夏 (男声·热情)</option>
-                                <option value="zh-CN-YunyeNeural">云野 (男声·野性)</option>
-                                <option value="zh-CN-YunzeNeural">云泽 (男声·深沉)</option>
+                                <option value="zh-HK-HiuGaaiNeural">曉佳 (HK) (女聲·友好)</option>
+                                <option value="zh-HK-HiuMaanNeural">曉曼 (HK) (女聲·友好)</option>
+                                <option value="zh-HK-WanLungNeural">雲龍 (HK) (男聲·友好)</option>
+                                <option value="zh-TW-HsiaoChenNeural">曉晨 (TW) (女聲·友好)</option>
+                                <option value="zh-TW-HsiaoYuNeural">曉宇 (TW) (女聲·友好)</option>
+                                <option value="zh-TW-YunJheNeural">雲哲 (TW) (男聲·友好)</option>
+                                <option value="zh-CN-XiaoxiaoNeural">曉曉 (CN) (女聲·溫柔)</option>
+                                <option value="zh-CN-YunxiNeural">雲希 (CN) (男聲·清朗)</option>
+                                <option value="zh-CN-YunyangNeural">雲揚 (CN) (男聲·陽光)</option>
+                                <option value="zh-CN-XiaoyiNeural">曉伊 (CN) (女聲·甜美)</option>
+                                <option value="zh-CN-YunjianNeural">雲健 (CN) (男聲·穩重)</option>
+                                <option value="zh-CN-XiaochenNeural">曉辰 (CN) (女聲·知性)</option>
+                                <option value="zh-CN-XiaohanNeural">曉涵 (CN) (女聲·優雅)</option>
+                                <option value="zh-CN-XiaomengNeural">曉夢 (CN) (女聲·夢幻)</option>
+                                <option value="zh-CN-XiaomoNeural">曉墨 (CN) (女聲·文藝)</option>
+                                <option value="zh-CN-XiaoqiuNeural">曉秋 (CN) (女聲·成熟)</option>
+                                <option value="zh-CN-XiaoruiNeural">曉睿 (CN) (女聲·智慧)</option>
+                                <option value="zh-CN-XiaoshuangNeural">曉雙 (CN) (女聲·活潑)</option>
+                                <option value="zh-CN-XiaoxuanNeural">曉萱 (CN) (女聲·清新)</option>
+                                <option value="zh-CN-XiaoyanNeural">曉顏 (CN) (女聲·柔美)</option>
+                                <option value="zh-CN-XiaoyouNeural">曉悠 (CN) (女聲·悠揚)</option>
+                                <option value="zh-CN-XiaozhenNeural">曉甄 (CN) (女聲·端莊)</option>
+                                <option value="zh-CN-YunfengNeural">雲楓 (CN) (男聲·磁性)</option>
+                                <option value="zh-CN-YunhaoNeural">雲皓 (CN) (男聲·豪邁)</option>
+                                <option value="zh-CN-YunxiaNeural">雲夏 (CN) (男聲·熱情)</option>
+                                <option value="zh-CN-YunyeNeural">雲野 (CN) (男聲·野性)</option>
+                                <option value="zh-CN-YunzeNeural">雲澤 (CN) (男聲·深沉)</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label" for="speed">语速调节</label>
+                            <label class="form-label" for="speed">語速調節</label>
                             <select class="form-select" id="speed">
                                 <option value="0.5">🐌 很慢</option>
                                 <option value="0.75">🚶 慢速</option>
                                 <option value="1.0" selected>⚡ 正常</option>
                                 <option value="1.25">🏃 快速</option>
                                 <option value="1.5">🚀 很快</option>
-                                <option value="2.0">💨 极速</option>
+                                <option value="2.0">💨 極速</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label" for="pitch">音调高低</label>
+                            <label class="form-label" for="pitch">音調高低</label>
                             <select class="form-select" id="pitch">
                                 <option value="-50">📉 很低沉</option>
                                 <option value="-25">📊 低沉</option>
-                                <option value="0" selected>🎵 标准</option>
+                                <option value="0" selected>🎵 標準</option>
                                 <option value="25">📈 高亢</option>
                                 <option value="50">🎶 很高亢</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label" for="style">语音风格</label>
+                            <label class="form-label" for="style">語音風格</label>
                             <select class="form-select" id="style">
-                                <option value="general" selected>🎭 通用风格</option>
-                                <option value="assistant">🤖 智能助手</option>
-                                <option value="chat">💬 聊天对话</option>
-                                <option value="customerservice">📞 客服专业</option>
-                                <option value="newscast">📺 新闻播报</option>
-                                <option value="affectionate">💕 亲切温暖</option>
-                                <option value="calm">😌 平静舒缓</option>
-                                <option value="cheerful">😊 愉快欢乐</option>
-                                <option value="gentle">🌸 温和柔美</option>
-                                <option value="lyrical">🎼 抒情诗意</option>
-                                <option value="serious">🎯 严肃正式</option>
+                                <option value="general" selected>🎭 通用風格</option>
+                                <option value="assistant">🤖 智慧助手</option>
+                                <option value="chat">💬 聊天對話</option>
+                                <option value="customerservice">📞 客服專業</option>
+                                <option value="newscast">📺 新聞播報</option>
+                                <option value="affectionate">💕 親切溫暖</option>
+                                <option value="calm">😌 平靜舒緩</option>
+                                <option value="cheerful">😊 愉快歡樂</option>
+                                <option value="gentle">🌸 溫和柔美</option>
+                                <option value="lyrical">🎼 抒情詩意</option>
+                                <option value="serious">🎯 嚴肅正式</option>
                             </select>
                         </div>
                     </div>
                     
                     <button type="submit" class="btn-primary" id="generateBtn">
                         <span>🎙️</span>
-                        <span>开始生成语音</span>
+                        <span>開始生成語音</span>
                     </button>
             </form>
             
                 <div id="result" class="result-container">
                     <div id="loading" class="loading-container" style="display: none;">
                         <div class="loading-spinner"></div>
-                        <p class="loading-text">正在生成语音，请稍候...</p>
+                        <p class="loading-text">正在生成語音，請稍候...</p>
                     </div>
                     
                     <div id="success" style="display: none;">
                         <audio id="audioPlayer" class="audio-player" controls></audio>
                         <a id="downloadBtn" class="btn-secondary" download="speech.mp3">
                             <span>📥</span>
-                            <span>下载音频文件</span>
+                            <span>下載音訊檔案</span>
                         </a>
                     </div>
                     
@@ -681,24 +687,24 @@ const HTML_PAGE = `
             </div>
         </div>
         
-        <!-- 公众号推广组件 -->
+        <!-- 公眾號推廣元件 -->
         <div class="wechat-promotion" id="wechatPromotion" style="display: none;">
             <div class="promotion-header">
-                <h2 class="promotion-title">🎉 生成成功！喜欢这个工具吗？</h2>
-                <p class="promotion-subtitle">关注我们获取更多AI工具和技术分享</p>
+                <h2 class="promotion-title">🎉 生成成功！喜歡這個工具嗎？</h2>
+                <p class="promotion-subtitle">關注我們獲取更多AI工具和技術分享</p>
             </div>
             <div class="promotion-content">
                 <div class="qr-code">
-                    <img src="https://img.996007.icu/file/img1/a48c4eac2f2a99909da5611c3885726.jpg" alt="微信公众号二维码" />
+                    <img src="https://img.996007.icu/file/img1/a48c4eac2f2a99909da5611c3885726.jpg" alt="微信公眾號二維碼" />
                 </div>
                 <div class="promotion-info">
-                    <h3>关注「一只会飞的旺旺」公众号</h3>
-                    <p>获取更多实用的AI工具、技术教程和独家资源分享</p>
+                    <h3>關注「一隻會飛的旺旺」公眾號</h3>
+                    <p>獲取更多實用的AI工具、技術教程和獨家資源分享</p>
                     <ul class="benefits-list">
-                        <li>最新AI工具推荐和使用教程</li>
-                        <li>前沿技术解析和实战案例</li>
-                        <li>独家资源和工具源码分享</li>
-                        <li>技术问题答疑和交流社群</li>
+                        <li>最新AI工具推薦和使用教程</li>
+                        <li>前沿技術解析和實戰案例</li>
+                        <li>獨家資源和工具原始碼分享</li>
+                        <li>技術問題答疑和交流社群</li>
                     </ul>
                 </div>
             </div>
@@ -709,13 +715,13 @@ const HTML_PAGE = `
         let selectedFile = null;
         let currentInputMethod = 'text'; // 'text' or 'file'
 
-        // 初始化页面
+        // 初始化頁面
         document.addEventListener('DOMContentLoaded', function() {
             initializeInputMethodTabs();
             initializeFileUpload();
         });
 
-        // 初始化输入方式切换
+        // 初始化輸入方式切換
         function initializeInputMethodTabs() {
             const textInputTab = document.getElementById('textInputTab');
             const fileUploadTab = document.getElementById('fileUploadTab');
@@ -741,19 +747,19 @@ const HTML_PAGE = `
             });
         }
 
-        // 初始化文件上传功能
+        // 初始化檔案上傳功能
         function initializeFileUpload() {
             const fileDropZone = document.getElementById('fileDropZone');
             const fileInput = document.getElementById('fileInput');
             const fileInfo = document.getElementById('fileInfo');
             const fileRemoveBtn = document.getElementById('fileRemoveBtn');
 
-            // 点击上传区域
+            // 點選上傳區域
             fileDropZone.addEventListener('click', function() {
                 fileInput.click();
             });
 
-            // 文件选择
+            // 檔案選擇
             fileInput.addEventListener('change', function(e) {
                 const file = e.target.files[0];
                 if (file) {
@@ -781,7 +787,7 @@ const HTML_PAGE = `
                 }
             });
 
-            // 移除文件
+            // 移除檔案
             fileRemoveBtn.addEventListener('click', function() {
                 selectedFile = null;
                 fileInput.value = '';
@@ -790,30 +796,30 @@ const HTML_PAGE = `
             });
         }
 
-        // 处理文件选择
+        // 處理檔案選擇
         function handleFileSelect(file) {
-            // 验证文件类型
+            // 驗證檔案型別
             if (!file.type.includes('text/') && !file.name.toLowerCase().endsWith('.txt')) {
-                alert('请选择txt格式的文本文件');
+                alert('請選擇txt格式的文字檔案');
                 return;
             }
 
-            // 验证文件大小
+            // 驗證檔案大小
             if (file.size > 500 * 1024) {
-                alert('文件大小不能超过500KB');
+                alert('檔案大小不能超過500KB');
                 return;
             }
 
             selectedFile = file;
             
-            // 显示文件信息
+            // 顯示檔案資訊
             document.getElementById('fileName').textContent = file.name;
             document.getElementById('fileSize').textContent = formatFileSize(file.size);
             document.getElementById('fileInfo').style.display = 'flex';
             document.getElementById('fileDropZone').style.display = 'none';
         }
 
-        // 格式化文件大小
+        // 格式化檔案大小
         function formatFileSize(bytes) {
             if (bytes === 0) return '0 Bytes';
             const k = 1024;
@@ -822,7 +828,7 @@ const HTML_PAGE = `
             return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
         }
 
-        // 表单提交处理
+        // 表單提交處理
         document.getElementById('ttsForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -837,21 +843,21 @@ const HTML_PAGE = `
             const success = document.getElementById('success');
             const error = document.getElementById('error');
             
-            // 验证输入
+            // 驗證輸入
             if (currentInputMethod === 'text') {
                 const text = document.getElementById('text').value;
                 if (!text.trim()) {
-                    alert('请输入要转换的文本内容');
+                    alert('請輸入要轉換的文字內容');
                     return;
                 }
             } else if (currentInputMethod === 'file') {
                 if (!selectedFile) {
-                    alert('请选择要上传的txt文件');
+                    alert('請選擇要上傳的txt檔案');
                     return;
                 }
             }
             
-            // 重置状态
+            // 重置狀態
             resultContainer.style.display = 'block';
             loading.style.display = 'block';
             success.style.display = 'none';
@@ -863,7 +869,7 @@ const HTML_PAGE = `
                 let response;
                 
                 if (currentInputMethod === 'text') {
-                    // 手动输入文本
+                    // 手動輸入文字
                     const text = document.getElementById('text').value;
                     response = await fetch('/v1/audio/speech', {
                         method: 'POST',
@@ -879,7 +885,7 @@ const HTML_PAGE = `
                         })
                     });
                 } else {
-                    // 文件上传
+                    // 檔案上傳
                     const formData = new FormData();
                     formData.append('file', selectedFile);
                     formData.append('voice', voice);
@@ -895,13 +901,13 @@ const HTML_PAGE = `
                 
                 if (!response.ok) {
                     const errorData = await response.json();
-                    throw new Error(errorData.error?.message || '生成失败');
+                    throw new Error(errorData.error?.message || '生成失敗');
                 }
                 
                 const audioBlob = await response.blob();
                 const audioUrl = URL.createObjectURL(audioBlob);
                 
-                // 显示音频播放器
+                // 顯示音訊播放器
                 const audioPlayer = document.getElementById('audioPlayer');
                 const downloadBtn = document.getElementById('downloadBtn');
                 
@@ -911,7 +917,7 @@ const HTML_PAGE = `
                 loading.style.display = 'none';
                 success.style.display = 'block';
                 
-                // 显示公众号推广组件
+                // 顯示公眾號推廣元件
                 setTimeout(() => {
                     const wechatPromotion = document.getElementById('wechatPromotion');
                     wechatPromotion.style.display = 'block';
@@ -921,10 +927,10 @@ const HTML_PAGE = `
             } catch (err) {
                 loading.style.display = 'none';
                 error.style.display = 'block';
-                error.textContent = '错误: ' + err.message;
+                error.textContent = '錯誤: ' + err.message;
             } finally {
                 generateBtn.disabled = false;
-                generateBtn.innerHTML = '<span>🎙️</span><span>开始生成语音</span>';
+                generateBtn.innerHTML = '<span>🎙️</span><span>開始生成語音</span>';
             }
         });
     </script>
@@ -949,7 +955,7 @@ async function handleRequest(request) {
     const requestUrl = new URL(request.url);
     const path = requestUrl.pathname;
 
-    // 返回前端页面
+    // 返回前端頁面
     if (path === "/" || path === "/index.html") {
         return new Response(HTML_PAGE, {
             headers: {
@@ -963,12 +969,12 @@ async function handleRequest(request) {
         try {
             const contentType = request.headers.get("content-type") || "";
             
-            // 处理文件上传
+            // 處理檔案上傳
             if (contentType.includes("multipart/form-data")) {
                 return await handleFileUpload(request);
             }
             
-            // 处理JSON请求（原有功能）
+            // 處理JSON請求（原有功能）
             const requestBody = await request.json();
             const {
                 input,
@@ -1013,7 +1019,7 @@ async function handleRequest(request) {
         }
     }
 
-    // 默认返回 404
+    // 預設返回 404
     return new Response("Not Found", { status: 404 });
 }
 
@@ -1034,7 +1040,7 @@ async function getVoice(text, voiceName = "zh-CN-XiaoxiaoNeural", rate = '+0%', 
         const chunks = text.trim().split("\n");
 
 
-        // 获取每个分段的音频
+        // 獲取每個分段的音訊
         //const audioChunks = await Promise.all(chunks.map(chunk => getAudioChunk(chunk, voiceName, rate, pitch, volume,style, outputFormat)));
         let audioChunks = []
         while (chunks.length > 0) {
@@ -1062,7 +1068,7 @@ async function getVoice(text, voiceName = "zh-CN-XiaoxiaoNeural", rate = '+0%', 
         }
 
 
-        // 将音频片段拼接起来
+        // 將音訊片段拼接起來
         const concatenatedAudio = new Blob(audioChunks, { type: 'audio/mpeg' });
         const response = new Response(concatenatedAudio, {
             headers: {
@@ -1075,7 +1081,7 @@ async function getVoice(text, voiceName = "zh-CN-XiaoxiaoNeural", rate = '+0%', 
         return response;
 
     } catch (error) {
-        console.error("语音合成失败:", error);
+        console.error("語音合成失敗:", error);
         return new Response(JSON.stringify({
             error: {
                 message: error,
@@ -1095,7 +1101,7 @@ async function getVoice(text, voiceName = "zh-CN-XiaoxiaoNeural", rate = '+0%', 
 
 
 
-//获取单个音频数据
+//獲取單個音訊資料
 async function getAudioChunk(text, voiceName, rate, pitch, volume, style, outputFormat = 'audio-24khz-48kbitrate-mono-mp3') {
     const endpoint = await getEndpoint();
     const url = `https://${endpoint.r}.tts.speech.microsoft.com/cognitiveservices/v1`;
@@ -1149,7 +1155,7 @@ async function getEndpoint() {
         return tokenInfo.endpoint;
     }
 
-    // 获取新token
+    // 獲取新token
     const endpointUrl = "https://dev.microsofttranslator.com/apps/endpoint?api-version=1.0";
     const clientId = crypto.randomUUID().replace(/-/g, "");
 
@@ -1171,7 +1177,7 @@ async function getEndpoint() {
         });
 
         if (!response.ok) {
-            throw new Error(`获取endpoint失败: ${response.status}`);
+            throw new Error(`獲取endpoint失敗: ${response.status}`);
         }
 
         const data = await response.json();
@@ -1187,10 +1193,10 @@ async function getEndpoint() {
         return data;
 
     } catch (error) {
-        console.error("获取endpoint失败:", error);
-        // 如果有缓存的token，即使过期也尝试使用
+        console.error("獲取endpoint失敗:", error);
+        // 如果有快取的token，即使過期也嘗試使用
         if (tokenInfo.token) {
-            console.log("使用过期的缓存token");
+            console.log("使用過期的快取token");
             return tokenInfo.endpoint;
         }
         throw error;
@@ -1254,7 +1260,7 @@ function dateFormat() {
     return formattedDate.toLowerCase();
 }
 
-// 处理文件上传的函数
+// 處理檔案上傳的函式
 async function handleFileUpload(request) {
     try {
         const formData = await request.formData();
@@ -1265,11 +1271,11 @@ async function handleFileUpload(request) {
         const pitch = formData.get('pitch') || '0';
         const style = formData.get('style') || 'general';
 
-        // 验证文件
+        // 驗證檔案
         if (!file) {
             return new Response(JSON.stringify({
                 error: {
-                    message: "未找到上传的文件",
+                    message: "未找到上傳的檔案",
                     type: "invalid_request_error",
                     param: "file",
                     code: "missing_file"
@@ -1283,11 +1289,11 @@ async function handleFileUpload(request) {
             });
         }
 
-        // 验证文件类型
+        // 驗證檔案型別
         if (!file.type.includes('text/') && !file.name.toLowerCase().endsWith('.txt')) {
             return new Response(JSON.stringify({
                 error: {
-                    message: "不支持的文件类型，请上传txt文件",
+                    message: "不支援的檔案型別，請上傳txt檔案",
                     type: "invalid_request_error",
                     param: "file",
                     code: "invalid_file_type"
@@ -1301,11 +1307,11 @@ async function handleFileUpload(request) {
             });
         }
 
-        // 验证文件大小（限制为500KB）
+        // 驗證檔案大小（限制為500KB）
         if (file.size > 500 * 1024) {
             return new Response(JSON.stringify({
                 error: {
-                    message: "文件大小超过限制（最大500KB）",
+                    message: "檔案大小超過限制（最大500KB）",
                     type: "invalid_request_error",
                     param: "file",
                     code: "file_too_large"
@@ -1319,14 +1325,14 @@ async function handleFileUpload(request) {
             });
         }
 
-        // 读取文件内容
+        // 讀取檔案內容
         const text = await file.text();
         
-        // 验证文本内容
+        // 驗證文字內容
         if (!text.trim()) {
             return new Response(JSON.stringify({
                 error: {
-                    message: "文件内容为空",
+                    message: "檔案內容為空",
                     type: "invalid_request_error",
                     param: "file",
                     code: "empty_file"
@@ -1340,11 +1346,11 @@ async function handleFileUpload(request) {
             });
         }
 
-        // 文本长度限制（10000字符）
+        // 文字長度限制（10000字元）
         if (text.length > 10000) {
             return new Response(JSON.stringify({
                 error: {
-                    message: "文本内容过长（最大10000字符）",
+                    message: "文字內容過長（最大10000字元）",
                     type: "invalid_request_error",
                     param: "file",
                     code: "text_too_long"
@@ -1358,12 +1364,12 @@ async function handleFileUpload(request) {
             });
         }
 
-        // 处理参数格式，与原有逻辑保持一致
+        // 處理引數格式，與原有邏輯保持一致
         let rate = parseInt(String((parseFloat(speed) - 1.0) * 100));
         let numVolume = parseInt(String(parseFloat(volume) * 100));
         let numPitch = parseInt(pitch);
 
-        // 调用TTS服务
+        // 呼叫TTS服務
         return await getVoice(
             text,
             voice,
@@ -1375,10 +1381,10 @@ async function handleFileUpload(request) {
         );
 
     } catch (error) {
-        console.error("文件上传处理失败:", error);
+        console.error("檔案上傳處理失敗:", error);
         return new Response(JSON.stringify({
             error: {
-                message: "文件处理失败",
+                message: "檔案處理失敗",
                 type: "api_error",
                 param: null,
                 code: "file_processing_error"
