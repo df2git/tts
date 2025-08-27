@@ -686,29 +686,6 @@ const HTML_PAGE = `
                 </div>
             </div>
         </div>
-        
-        <!-- 公眾號推廣元件 -->
-        <div class="wechat-promotion" id="wechatPromotion" style="display: none;">
-            <div class="promotion-header">
-                <h2 class="promotion-title">🎉 生成成功！喜歡這個工具嗎？</h2>
-                <p class="promotion-subtitle">關注我們獲取更多AI工具和技術分享</p>
-            </div>
-            <div class="promotion-content">
-                <div class="qr-code">
-                    <img src="https://img.996007.icu/file/img1/a48c4eac2f2a99909da5611c3885726.jpg" alt="微信公眾號二維碼" />
-                </div>
-                <div class="promotion-info">
-                    <h3>關注「一隻會飛的旺旺」公眾號</h3>
-                    <p>獲取更多實用的AI工具、技術教程和獨家資源分享</p>
-                    <ul class="benefits-list">
-                        <li>最新AI工具推薦和使用教程</li>
-                        <li>前沿技術解析和實戰案例</li>
-                        <li>獨家資源和工具原始碼分享</li>
-                        <li>技術問題答疑和交流社群</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script>
