@@ -8,7 +8,7 @@ let tokenInfo = {
 // HTML 頁面模板
 const HTML_PAGE = `
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-HK">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -2453,7 +2453,7 @@ function getSsml(text, voiceName, rate, pitch, volume, style, slien = 0) {
     if (slien > 0) {
         slien_str = `<break time="${slien}ms" />`
     }
-    return `<speak xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" version="1.0" xml:lang="zh-CN"> 
+    return `<speak xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" version="1.0" xml:lang="zh-HK"> 
                 <voice name="${voiceName}"> 
                     <mstts:express-as style="${style}"  styledegree="2.0" role="default" > 
                         <prosody rate="${rate}" pitch="${pitch}" volume="${volume}">${escapedText}</prosody> 
